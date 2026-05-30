@@ -12,7 +12,6 @@
           stateVersion = lib.mkOption {
             type = lib.types.singleLineStr;
             readOnly = true;
-            default = config.stateVersion;
           };
           allowUnfree = lib.mkOption {
             type = lib.types.bool;

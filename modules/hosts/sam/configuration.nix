@@ -2,6 +2,7 @@
 {
   configurations.nixos.sam = {
     # Sytem optinos
+    stateVersion = "26.05";
     wallpaper = ../../../wallpapers/cat.png;
     base16Scheme = "gruvbox-dark-hard";
 

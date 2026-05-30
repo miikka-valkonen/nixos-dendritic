@@ -20,10 +20,5 @@
       type = lib.types.str;
       readOnly = true;
     };
-
-    stateVersion = lib.mkOption {
-      type = lib.types.str;
-      readOnly = true;
-    };
   };
 }

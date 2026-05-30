@@ -5,5 +5,4 @@
     hashedPassword = "<password hash>";
   };
   rootHashedPassword = "<password hash>";
-  stateVersion = "26.05";
 }
