@@ -13,11 +13,11 @@ let
     fonts = {
       serif = {
         package = pkgs.nerd-fonts.agave;
-        name = "Agave Nerd Font";
+        name = "Agave Nerd Font Serif";
       };
       sansSerif = {
         package = pkgs.nerd-fonts.agave;
-        name = "Agave Nerd Font";
+        name = "Agave Nerd Font Sans Serif";
       };
       monospace = {
         package = pkgs.nerd-fonts.agave;
