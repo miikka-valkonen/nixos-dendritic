@@ -6,7 +6,7 @@ This directory contains Home Manager modules that configure user-level applicati
 
 - `dev/`: Development tools and environments (Alacritty, Git, Zsh, Zoxide, Direnv, Zed, Nixvim, dev packages).
   - `nixvim/`: A fully featured Neovim with LSP, Telescope, Git, Copilot Chat — see [`./dev/nixvim/README.md`](./dev/nixvim/README.md).
-- `games/`: Gaming software (Lutris, Heroic, Minecraft, FF14).
+- `games/`: Gaming software (Lutris, Heroic, Minecraft, FF14, Retroarch).
 - `office/`: Productivity suites (Calibre, Obsidian, OnlyOffice).
 
 ## Standalone Modules

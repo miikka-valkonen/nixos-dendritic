@@ -13,7 +13,6 @@ This directory contains modules for graphical desktop environments, hardware opt
 | `udisk` | Automatic volume mounting via udisks2 |
 | `xdg` | XDG Desktop Portal compatibility |
 | `games` | Gaming-related system requirements |
-| `retroarch` | RetroArch emulation framework |
 
 ## Desktop Managers
 
