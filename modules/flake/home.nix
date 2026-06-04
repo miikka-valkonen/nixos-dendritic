@@ -3,8 +3,7 @@
   lib,
   config,
   ...
-}:
-{
+}: {
   options.configurations.homeManager = lib.mkOption {
     type = lib.types.lazyAttrsOf (
       lib.types.submodule {
@@ -17,42 +16,39 @@
 
   config.flake = {
     homeConfigurations = lib.flip lib.mapAttrs config.configurations.homeManager (
-      name:
-      let
+      name: let
         host = config.configurations.nixos.${name};
         pkgs = import inputs.nixpkgs {
           inherit (host) system;
           config.allowUnfree = host.allowUnfree;
         };
       in
-      { module, ... }:
-      inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          config.flake.modules.homeManager.stylix
-          (
-            { pkgs, ... }:
-            {
-              stylix.image = host.wallpaper;
-              stylix.base16Scheme = lib.mkIf (
-                host.base16Scheme != null
-              ) "${pkgs.base16-schemes}/share/themes/${host.base16Scheme}.yaml";
-            }
-          )
+        {module, ...}:
+          inputs.home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            modules = [
+              config.flake.modules.homeManager.stylix
+              (
+                {pkgs, ...}: {
+                  stylix.base16Scheme = lib.mkIf (
+                    host.base16Scheme != null
+                  ) "${pkgs.base16-schemes}/share/themes/${host.base16Scheme}.yaml";
+                }
+              )
 
-          module
+              module
 
-          {
-            home = {
-              homeDirectory = lib.mkDefault "/home/${config.user.username}";
-              inherit (config.user) username;
-              inherit (host) stateVersion;
-            };
+              {
+                home = {
+                  homeDirectory = lib.mkDefault "/home/${config.user.username}";
+                  inherit (config.user) username;
+                  inherit (host) stateVersion;
+                };
 
-            programs.home-manager.enable = true;
+                programs.home-manager.enable = true;
+              }
+            ];
           }
-        ];
-      }
     );
 
     checks =

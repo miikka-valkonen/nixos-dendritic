@@ -1,12 +1,9 @@
 {
   flake.modules.nixos.kde =
-    { pkgs, config, ... }:
+    { pkgs, ... }:
     let
       custom-sddm = pkgs.sddm-astronaut.override {
-        themeConfig = {
-          Background = "${config.stylix.image}";
-          Font = config.stylix.fonts.serif.name;
-        };
+        embeddedTheme = "purple_leaves";
       };
     in
     {

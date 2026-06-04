@@ -1,27 +1,26 @@
-{ inputs, ... }:
-let
+{inputs, ...}: let
   stylix = pkgs: {
     enable = true;
     polarity = "dark";
 
     cursor = {
       package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
+      name = "Bibata-Modern-Classic";
       size = 20;
     };
 
     fonts = {
       serif = {
-        package = pkgs.nerd-fonts.agave;
-        name = "Agave Nerd Font Serif";
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "Jetbrains Mono Nerd Font Serif";
       };
       sansSerif = {
-        package = pkgs.nerd-fonts.agave;
-        name = "Agave Nerd Font Sans Serif";
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "Jetbrains Mono Nerd Font Sans Serif";
       };
       monospace = {
-        package = pkgs.nerd-fonts.agave;
-        name = "Agave Nerd Font Mono";
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "Jetbrains Mono Nerd Font Mono";
       };
 
       emoji = {
@@ -30,28 +29,17 @@ let
       };
     };
   };
-in
-{
-  flake.modules.nixos.stylix =
-    { pkgs, ... }:
-    {
-      imports = [ inputs.stylix.nixosModules.stylix ];
-      stylix = stylix pkgs;
-    };
-
-  flake.modules.homeManager.stylix =
-    { pkgs, ... }:
-    {
-      imports = [ inputs.stylix.homeModules.stylix ];
-      stylix = (stylix pkgs) // {
+in {
+  flake.modules.homeManager.stylix = {pkgs, ...}: {
+    imports = [inputs.stylix.homeModules.stylix];
+    # apply defaults for all hosts
+    stylix =
+      (stylix pkgs)
+      // {
         targets.firefox = {
-          profileNames = [ "default" ];
-          colorTheme.enable = true;
-        };
-        targets.librewolf = {
-          profileNames = [ "default" ];
+          profileNames = ["default"];
           colorTheme.enable = true;
         };
       };
-    };
+  };
 }

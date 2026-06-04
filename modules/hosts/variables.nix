@@ -1,7 +1,7 @@
 {
   user = {
-    username = "<name>";
-    email = "<mail>";
+    username = "miigha";
+    email = "tech@valkonen.cc";
     hashedPassword = "<password hash>";
   };
   rootHashedPassword = "<password hash>";

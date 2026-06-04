@@ -1,5 +1,8 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  ...
+}: {
   options.configurations.nixos = lib.mkOption {
     type = lib.types.lazyAttrsOf (
       lib.types.submodule {
@@ -17,16 +20,12 @@
             type = lib.types.bool;
             default = true;
           };
-
-          wallpaper = lib.mkOption {
-            type = lib.types.path;
-          };
           base16Scheme = lib.mkOption {
             type = lib.types.nullOr (
               lib.types.enum [
-                "catppuccin-mocha"
-                "gruvbox-dark-hard"
-                "tokyo-night-dark"
+                "kanagawa-dragon"
+                "black-metal-mayhem"
+                "framer"
               ]
             );
             default = null;
@@ -42,54 +41,39 @@
 
   config.flake = {
     nixosConfigurations = lib.flip lib.mapAttrs config.configurations.nixos (
-      name:
-      {
+      name: {
         module,
         system,
         allowUnfree,
         stateVersion,
-        wallpaper,
-        base16Scheme,
         ...
       }:
-      lib.nixosSystem {
-        modules = [
-          (
-            { pkgs, ... }:
+        lib.nixosSystem {
+          modules = [
+            module
+
             {
-              stylix.image = wallpaper;
-              stylix.base16Scheme = lib.mkIf (
-                base16Scheme != null
-              ) "${pkgs.base16-schemes}/share/themes/${base16Scheme}.yaml";
-            }
-          )
-
-          config.flake.modules.nixos.stylix
-
-          module
-
-          {
-            nixpkgs = {
-              hostPlatform = system;
-              config.allowUnfree = allowUnfree;
-            };
-
-            nix = {
-              settings.experimental-features = "pipe-operators nix-command flakes";
-              optimise.automatic = true;
-              gc = {
-                automatic = true;
-                dates = "weekly";
-                options = "--delete-older-than 30d";
+              nixpkgs = {
+                hostPlatform = system;
+                config.allowUnfree = allowUnfree;
               };
-            };
 
-            networking.hostName = name;
+              nix = {
+                settings.experimental-features = "pipe-operators nix-command flakes";
+                optimise.automatic = true;
+                gc = {
+                  automatic = true;
+                  dates = "weekly";
+                  options = "--delete-older-than 30d";
+                };
+              };
 
-            system.stateVersion = stateVersion;
-          }
-        ];
-      }
+              networking.hostName = name;
+
+              system.stateVersion = stateVersion;
+            }
+          ];
+        }
     );
 
     checks =

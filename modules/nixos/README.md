@@ -13,11 +13,7 @@ This directory contains NixOS system-level modules for core services, hardware s
 | Module | Description |
 |--------|-------------|
 | `bluetooth` | Enable and configure Bluetooth hardware |
-| `docker` | Docker container engine and Docker Compose |
-| `podman` | Rootless Podman container engine |
 | `plymouth` | Boot splash screen configuration |
-| `vm` | Virtualization support |
-| `wacom` | Wacom tablet input support |
 
 ## Usage
 
@@ -27,9 +23,8 @@ Modules are automatically exposed via `config.flake.modules.nixos` and can be im
 module.imports = with config.flake.modules.nixos; [
   core
   desktop
-  kde       # or gnome / cosmic
+  kde
   bluetooth
-  tailscale
   # ...
 ];
 ```
