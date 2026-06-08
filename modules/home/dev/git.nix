@@ -1,16 +1,16 @@
-{ config, ... }:
-{
+{config, ...}: {
   flake.modules.homeManager.git = {
-    programs = {
-      git = {
-        enable = true;
-        lfs.enable = true;
-        settings.user = {
-          name = config.user.username;
-          inherit (config.user) email;
-        };
+    programs.git = {
+      enable = true;
+      settings.user = {
+        name = config.user.username;
+        inherit (config.user) email;
       };
-      lazygit.enable = true;
+      alias = {
+        st = "status";
+        co = "checkout";
+        cob = "checkout -b";
+      };
     };
   };
 }

@@ -1,31 +1,13 @@
-{ config, ... }:
-{
-  configurations.homeManager.dean = {
-    module =
-      { pkgs, ... }:
-      {
-        imports = with config.flake.modules.homeManager; [
-          bottles
-          discord
-          gtk
-          librewolf
-          plasma-manager
-          udiskie
+{config, ...}: {
+  configurations.homeManager.laeppaeri = {
+    module = {pkgs, ...}: {
+      imports = with config.flake.modules.homeManager; [
+        dev
 
-          # DEV
-          dev
-
-          # GAMES
-          lutris
-
-          # OFFICE
-          obsidian
-          onlyoffice
-        ];
-
-        home.packages = with pkgs; [
-          winboat # windows as a container
-        ];
-      };
+        onlyoffice
+        discord
+        plasma-manager
+      ];
+    };
   };
 }

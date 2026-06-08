@@ -10,10 +10,6 @@
         useQuickCss = true;
         disableMinSize = true;
         plugins = {
-          MessageLogger = {
-            enabled = true;
-            ignoreSelf = true;
-          };
           FakeNitro.enabled = true;
           clearURLs.enabled = true;
         };

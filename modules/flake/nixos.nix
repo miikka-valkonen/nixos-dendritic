@@ -20,6 +20,10 @@
             type = lib.types.bool;
             default = true;
           };
+
+          wallpaper = lib.mkOption {
+            type = lib.types.path;
+          };
           base16Scheme = lib.mkOption {
             type = lib.types.nullOr (
               lib.types.enum [

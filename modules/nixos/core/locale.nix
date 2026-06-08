@@ -1,27 +1,28 @@
 {
   flake.modules.nixos.locale = {
-    time.timeZone = "Europe/Madrid";
+    time.timeZone = "Europe/Helsinki";
 
     i18n = {
       defaultLocale = "en_US.UTF-8";
+
       extraLocaleSettings = {
-        LC_ADDRESS = "es_ES.UTF-8";
-        LC_IDENTIFICATION = "es_ES.UTF-8";
-        LC_MEASUREMENT = "es_ES.UTF-8";
-        LC_MONETARY = "es_ES.UTF-8";
-        LC_NAME = "es_ES.UTF-8";
-        LC_NUMERIC = "es_ES.UTF-8";
-        LC_PAPER = "es_ES.UTF-8";
-        LC_TELEPHONE = "es_ES.UTF-8";
-        LC_TIME = "es_ES.UTF-8";
+        LC_ADDRESS = "fi_FI.UTF-8";
+        LC_IDENTIFICATION = "fi_FI.UTF-8";
+        LC_MEASUREMENT = "fi_FI.UTF-8";
+        LC_MONETARY = "fi_FI.UTF-8";
+        LC_NAME = "fi_FI.UTF-8";
+        LC_NUMERIC = "fi_FI.UTF-8";
+        LC_PAPER = "fi_FI.UTF-8";
+        LC_TELEPHONE = "fi_FI.UTF-8";
+        LC_TIME = "fi_FI.UTF-8";
       };
     };
 
     services.xserver.xkb = {
-      layout = "es";
-      variant = "";
+      layout = "fi";
+      variant = "nodeadkeys";
     };
 
-    console.keyMap = "es";
+    console.keyMap = "fi";
   };
 }

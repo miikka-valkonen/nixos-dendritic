@@ -1,34 +1,29 @@
 {
-  flake.modules.homeManager.common-packages =
-    { pkgs, ... }:
-    {
-      home.packages = with pkgs; [
-        # LANGUAGE
-        ## PYTHON
-        python3
-        ## NIX
-        nixd
-        nixfmt
-        nil
-        ## JAVA
-        jdk
-        maven
-
-        # COMMANDS
-        ## COMPRESED
-        p7zip
-        unzip
-        unrar
-        ## NETWORK
-        inetutils
-        dig
-        cloudflared
-        wget
-        ## MEMORY
-        tree
-        ncdu
-        ## SECURITY
-        lynis
-      ];
-    };
+  flake.modules.homeManager.common-packages = {pkgs, ...}: {
+    home.packages = with pkgs; [
+      neovim
+      unzip
+      fzf
+      ripgrep
+      fd
+      g-ls
+      tmuxinator
+      delta
+      cargo
+      rustc
+      zoxide
+      fastfetch
+      gcc
+      jq
+      luajitPackages.luarocks_bootstrap
+      lazygit
+      rtk
+      nix-search-cli
+      aerc
+      gnumake
+      nodejs_26
+      opencode
+      kitty
+    ];
+  };
 }

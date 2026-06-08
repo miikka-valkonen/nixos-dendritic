@@ -1,12 +1,8 @@
-{ config, ... }:
-{
+{config, ...}: {
   flake.modules.nixos.desktop.imports = with config.flake.modules.nixos; [
     audio
-    dconf
-    games
     network
-    power
-    udisk
-    xdg
+    # power # look onto this later
+    # udisk # look onto this later
   ];
 }

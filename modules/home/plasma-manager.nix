@@ -1,7 +1,6 @@
-{ inputs, ... }:
-{
+{inputs, ...}: {
   flake.modules.homeManager.plasma-manager = {
-    imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
+    imports = [inputs.plasma-manager.homeModules.plasma-manager];
 
     programs.plasma = {
       enable = true;
@@ -26,11 +25,8 @@
             {
               iconTasks = {
                 launchers = [
-                  "applications:org.kde.dolphin.desktop"
-                  "applications:librewolf.desktop"
-                  "applications:Alacritty.desktop"
-                  "applications:dev.zed.Zed.desktop"
-                  "applications:obsidian.desktop"
+                  "applications:firefox.desktop"
+                  "applications:kitty.desktop"
                 ];
               };
             }
@@ -83,11 +79,7 @@
         numlockOnStartup = "on";
 
         layouts = [
-          {
-            layout = "us";
-            variant = "intl";
-          }
-          { layout = "es"; }
+          {layout = "fi";}
         ];
       };
 
