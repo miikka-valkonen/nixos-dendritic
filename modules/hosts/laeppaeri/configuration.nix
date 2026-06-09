@@ -5,6 +5,7 @@
     base16Scheme = "framer";
 
     module.imports = with config.flake.modules.nixos; [
+      audio
       bluetooth
       plymouth
 
@@ -12,7 +13,6 @@
 
       # DESKTOP
       desktop
-      kde
     ];
   };
 }

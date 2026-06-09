@@ -4,8 +4,9 @@
       imports = with config.flake.modules.homeManager; [
         dev
 
-        onlyoffice
         discord
+        firefox
+        onlyoffice
         plasma-manager
       ];
     };

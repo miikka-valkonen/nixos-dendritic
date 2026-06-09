@@ -19,6 +19,7 @@
     environment.systemPackages = with pkgs; [
       custom-sddm
 
+      kdePackages.kate
       kdePackages.kcalc # Calculator
       kdePackages.kolourpaint # Simple paint program
       kdePackages.ksystemlog # System log viewer
