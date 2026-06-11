@@ -1,5 +1,5 @@
 {
-  description = "Adega's config with dendritic pattern";
+  description = "miigha's config with dendritic pattern";
 
   inputs = {
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
