@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.git = {pkgs, ...}: {
+  flake.modules.homeManager.tmux = {pkgs, ...}: {
     programs.tmux = {
       enable = true;
       plugins = with pkgs.tmuxPlugins; [
