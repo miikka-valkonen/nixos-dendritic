@@ -30,6 +30,7 @@
               config.flake.modules.homeManager.stylix
               (
                 {pkgs, ...}: {
+                  stylix.image = host.wallpaper;
                   stylix.base16Scheme = lib.mkIf (
                     host.base16Scheme != null
                   ) "${pkgs.base16-schemes}/share/themes/${host.base16Scheme}.yaml";

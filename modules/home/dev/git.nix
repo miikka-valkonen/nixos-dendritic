@@ -6,10 +6,11 @@
         name = config.user.username;
         inherit (config.user) email;
       };
-      alias = {
+      settings.alias = {
         st = "status";
         co = "checkout";
         cob = "checkout -b";
+        com = "checkout main";
       };
     };
   };
