@@ -1,9 +1,14 @@
-{
-  flake.modules.homeManager.firefox = {
+{inputs, ...}: {
+  flake.modules.homeManager.firefox = {pkgs, ...}: {
     programs.firefox = {
       enable = true;
 
-      preferences = {
+      profiles.default.extensions.force = true;
+      profiles.default.extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
+        ublock-origin
+        vimium
+      ];
+      profiles.default.settings = {
         "browser.startup.homepage" = "https://wiki.nixos.org/wiki/NixOS_Wiki";
         # SECTION: SECUREFOX                                                        *
         # TRACKING PROTECTION

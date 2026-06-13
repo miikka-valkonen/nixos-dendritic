@@ -1,8 +1,16 @@
 {
-  flake.modules.nixos.plymouth = {
-
+  flake.modules.nixos.plymouth = {pkgs, ...}: {
     boot = {
-      plymouth.enable = true;
+      plymouth = {
+        enable = true;
+        theme = "lone";
+        themePackages = with pkgs; [
+          # By default we would install all themes
+          (adi1090x-plymouth-themes.override {
+            selected_themes = ["lone"];
+          })
+        ];
+      };
 
       # Enable "Silent boot"
       consoleLogLevel = 3;

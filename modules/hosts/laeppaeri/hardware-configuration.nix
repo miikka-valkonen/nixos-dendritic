@@ -8,13 +8,14 @@
   }: {
     imports = [
       (modulesPath + "/installer/scan/not-detected.nix")
-      inputs.nixos-hardware.nixosModules.common-cpu-intel-haswell
+      inputs.nixos-hardware.nixosModules.common-cpu-intel
+      inputs.nixos-hardware.nixosModules.common-pc-laptop
     ];
 
     boot = {
       kernelPackages = pkgs.linuxPackages_latest;
       initrd = {
-        availableKernelModules = ["xhci_pci" "ehci_pci" "ahci" "usb_storag@e" "sd_mod" "sr_mod" "rtsx_usb_sdmmc"];
+        availableKernelModules = ["xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" "rtsx_usb_sdmmc"];
         kernelModules = [];
       };
       kernelModules = ["kvm-intel"];
