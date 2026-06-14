@@ -2,12 +2,14 @@
   configurations.homeManager.laeppaeri = {
     module = {pkgs, ...}: {
       imports = with config.flake.modules.homeManager; [
-        dev
+        dev-base
 
         discord
         firefox
         onlyoffice
         plasma-manager
+        aerc
+        kitty
       ];
     };
   };

@@ -12,7 +12,6 @@
 
       core
 
-      # DESKTOP
       desktop
     ];
   };

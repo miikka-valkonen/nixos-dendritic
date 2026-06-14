@@ -7,23 +7,21 @@
       ripgrep
       fd
       g-ls
+      zoxide
       tmuxinator
       delta
       cargo
       rustc
-      zoxide
       fastfetch
       gcc
       jq
       luajitPackages.luarocks_bootstrap
       lazygit
-      rtk
       nix-search-cli
-      aerc
       gnumake
       nodejs_26
       opencode
-      kitty
+      rtk
     ];
   };
 }
