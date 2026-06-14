@@ -7,6 +7,7 @@
       profiles.default.extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
         ublock-origin
         vimium
+        bitwarden
       ];
       profiles.default.settings = {
         "browser.startup.homepage" = "https://wiki.nixos.org/wiki/NixOS_Wiki";
