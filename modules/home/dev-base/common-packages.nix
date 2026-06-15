@@ -7,7 +7,6 @@
       ripgrep
       fd
       g-ls
-      zoxide
       tmuxinator
       delta
       cargo

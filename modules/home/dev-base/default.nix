@@ -4,5 +4,6 @@
     fish
     tmux
     git
+    zoxide
   ];
 }
