@@ -10,6 +10,8 @@
         plasma-manager
         aerc
         kitty
+        spotify
+        spotify-player
       ];
     };
   };
