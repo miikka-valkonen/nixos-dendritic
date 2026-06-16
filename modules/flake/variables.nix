@@ -20,5 +20,10 @@
       type = lib.types.str;
       readOnly = true;
     };
+
+    externalDevices.audioPlayer = lib.mkOption {
+      type = lib.types.singleLineStr;
+      readOnly = true;
+    };
   };
 }

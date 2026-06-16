@@ -3,7 +3,7 @@
 [![NixOS](https://img.shields.io/badge/NixOS-unstable-blue?logo=nixos&logoColor=white)](https://nixos.org)
 [![flake-parts](https://img.shields.io/badge/built%20with-flake--parts-7a4c9d)](https://github.com/hercules-ci/flake-parts)
 
-Adega's personal NixOS configuration using a **dendritic** (tree-based) module discovery pattern built on top of [flake-parts](https://github.com/hercules-ci/flake-parts) and [import-tree](https://github.com/vic/import-tree).
+Miigha's personal NixOS configuration using a **dendritic** (tree-based) module discovery pattern built on top of [flake-parts](https://github.com/hercules-ci/flake-parts) and [import-tree](https://github.com/vic/import-tree).
 
 Modules placed anywhere under `modules/` are automatically discovered and made available — no manual import lists needed.
 
