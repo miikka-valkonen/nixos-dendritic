@@ -13,6 +13,8 @@
         set-option -sg escape-time 10
         set-option -g focus-events on
         set-option -g default-terminal "screen-256color"
+        set-option -g set-clipboard on
+        bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "wl-copy"
       '';
     };
   };

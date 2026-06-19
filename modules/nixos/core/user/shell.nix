@@ -1,4 +1,3 @@
-# Default shell for the user across NixOS and Android
 {config, ...}: {
   flake.modules.nixos.user = {pkgs, ...}: {
     programs.fish.enable = true;

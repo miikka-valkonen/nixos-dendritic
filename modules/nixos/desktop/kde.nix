@@ -18,6 +18,7 @@
 
     environment.systemPackages = with pkgs; [
       custom-sddm
+      wl-clipboard
 
       kdePackages.kate
       kdePackages.kcalc # Calculator
