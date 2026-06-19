@@ -1,2 +1,3 @@
 /result
-modules/hosts/variables.nix
+.github/
+.rtk/

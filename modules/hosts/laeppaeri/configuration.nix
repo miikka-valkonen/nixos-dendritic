@@ -8,6 +8,7 @@
       audio
       bluetooth
       plymouth
+      openssh
       sshagent
 
       core

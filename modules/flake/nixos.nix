@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   config,
   ...
@@ -55,6 +56,13 @@
         lib.nixosSystem {
           modules = [
             module
+
+            inputs.agenix.nixosModules.default
+
+            {
+              age.secrets.user.file = ../../secrets/user.age;
+              age.secrets.root.file = ../../secrets/root.age;
+            }
 
             {
               nixpkgs = {
