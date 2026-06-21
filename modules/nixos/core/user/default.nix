@@ -1,18 +1,15 @@
 { config, ... }:
-let
-  username = config.user.username;
-in {
-  flake.modules.nixos.user = { config, ... }: {
+{
+  flake.modules.nixos.user = {
     users.users = {
       root = {
-        isSystemUser = true;
-        hashedPasswordFile = config.age.secrets.root.path;
+        password = "change-me-now";
       };
 
-      ${username} = {
+      ${config.user.username} = {
         isNormalUser = true;
-        description = username;
-        hashedPasswordFile = config.age.secrets.user.path;
+        description = config.user.username;
+        password = "change-me-now";
       };
     };
   };
