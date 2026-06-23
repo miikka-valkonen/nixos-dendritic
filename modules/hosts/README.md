@@ -16,13 +16,15 @@ Each host directory typically contains:
 
 ## Variable Management
 
-`variables.nix` houses global values shared across all hosts:
+Host-specific values live inside each host's `configuration.nix` under
+`configurations.nixos.<host>`.
 
-| Variable | Value |
-|----------|-------|
-| `user.username` | --- |
-| `user.email` | --- |
-| `stateVersion` | `26.05` |
+Common examples:
+
+- `user.username`
+- `user.email`
+- `externalDevices.audioPlayer`
+- `stateVersion`
 
 ## Adding a New Host
 

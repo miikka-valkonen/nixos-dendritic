@@ -1,10 +1,13 @@
-{config, ...}: {
+{
   flake.modules.homeManager.spotify-player = {
+    externalDevices,
+    ...
+  }: {
     programs.spotify-player = {
       enable = true;
       settings = {
         enable_streaming = "Never";
-        default_device = config.externalDevices.audioPlayer;
+        default_device = externalDevices.audioPlayer;
       };
     };
   };

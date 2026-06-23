@@ -26,6 +26,9 @@
         {module, ...}:
           inputs.home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
+            extraSpecialArgs = {
+              inherit (host) user externalDevices;
+            };
             modules = [
               config.flake.modules.homeManager.stylix
               (
@@ -41,8 +44,8 @@
 
               {
                 home = {
-                  homeDirectory = lib.mkDefault "/home/${config.user.username}";
-                  inherit (config.user) username;
+                  homeDirectory = lib.mkDefault "/home/${host.user.username}";
+                  inherit (host.user) username;
                   inherit (host) stateVersion;
                 };
 

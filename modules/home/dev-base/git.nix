@@ -1,10 +1,13 @@
-{config, ...}: {
+{
   flake.modules.homeManager.git = {
+    user,
+    ...
+  }: {
     programs.git = {
       enable = true;
       settings.user = {
-        name = config.user.username;
-        inherit (config.user) email;
+        name = user.username;
+        inherit (user) email;
       };
       settings.alias = {
         st = "status";

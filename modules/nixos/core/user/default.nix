@@ -1,14 +1,16 @@
-{ config, ... }:
 {
   flake.modules.nixos.user = {
+    user,
+    ...
+  }: {
     users.users = {
       root = {
         password = "change-me-now";
       };
 
-      ${config.user.username} = {
+      ${user.username} = {
         isNormalUser = true;
-        description = config.user.username;
+        description = user.username;
         password = "change-me-now";
       };
     };

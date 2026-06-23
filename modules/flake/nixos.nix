@@ -17,6 +17,21 @@
             type = lib.types.singleLineStr;
             readOnly = true;
           };
+          user = {
+            username = lib.mkOption {
+              type = lib.types.singleLineStr;
+              readOnly = true;
+            };
+            email = lib.mkOption {
+              type = lib.types.singleLineStr;
+              readOnly = true;
+            };
+          };
+
+          externalDevices.audioPlayer = lib.mkOption {
+            type = lib.types.singleLineStr;
+            readOnly = true;
+          };
           allowUnfree = lib.mkOption {
             type = lib.types.bool;
             default = true;
@@ -51,6 +66,8 @@
         system,
         allowUnfree,
         stateVersion,
+        user,
+        externalDevices,
         ...
       }:
         lib.nixosSystem {
@@ -58,6 +75,10 @@
             module
 
             {
+              _module.args = {
+                inherit user externalDevices;
+              };
+
               nixpkgs = {
                 hostPlatform = system;
                 config.allowUnfree = allowUnfree;
