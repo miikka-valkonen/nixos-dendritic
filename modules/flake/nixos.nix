@@ -71,14 +71,14 @@
         ...
       }:
         lib.nixosSystem {
+          specialArgs = {
+            inherit user externalDevices;
+          };
+
           modules = [
             module
 
             {
-              _module.args = {
-                inherit user externalDevices;
-              };
-
               nixpkgs = {
                 hostPlatform = system;
                 config.allowUnfree = allowUnfree;
