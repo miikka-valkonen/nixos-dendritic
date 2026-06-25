@@ -4,6 +4,7 @@
       enable = true;
       plugins = with pkgs.tmuxPlugins; [
         minimal-tmux-status
+        yank
         copy-toolkit
       ];
 
