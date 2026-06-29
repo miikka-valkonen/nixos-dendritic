@@ -9,13 +9,13 @@
       ];
 
       extraConfig = ''
-        set-option -g default-command "env -u __ETC_PROFILE_NIX_SOURCED $SHELL"
+        set -g default-command "env -u __ETC_PROFILE_NIX_SOURCED $SHELL"
         set-window-option -g mode-keys vi
-        set-option -sg escape-time 10
-        set-option -g focus-events on
-        set-option -g default-terminal "screen-256color"
-        set-option -g set-clipboard on
-        bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "wl-copy"
+        set -sg escape-time 10
+        set -g focus-events on
+        set -g default-terminal "screen-256color"
+        bind-key -T copy-mode-vi v send-keys -X begin-selection
+        bind-key -T copy-mode-vi V send-keys -X rectangle-toggle
       '';
     };
   };
