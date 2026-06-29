@@ -45,6 +45,9 @@
               {
                 home = {
                   homeDirectory = lib.mkDefault "/home/${host.user.username}";
+                  sessionVariables = {
+                    EDITOR = "nvim";
+                  };
                   inherit (host.user) username;
                   inherit (host) stateVersion;
                 };
