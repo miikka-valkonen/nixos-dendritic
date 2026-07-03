@@ -21,6 +21,7 @@
       nodejs_26
       opencode
       rtk
+      claude-code
     ];
   };
 }
