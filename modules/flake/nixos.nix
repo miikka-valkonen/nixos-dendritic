@@ -36,6 +36,10 @@
             type = lib.types.bool;
             default = true;
           };
+          wsl = lib.mkOption {
+            type = lib.types.bool;
+            default = false;
+          };
 
           wallpaper = lib.mkOption {
             type = lib.types.path;
@@ -68,6 +72,7 @@
         stateVersion,
         user,
         externalDevices,
+        wsl,
         ...
       }:
         lib.nixosSystem {
@@ -98,6 +103,10 @@
 
               system.stateVersion = stateVersion;
             }
+          ]
+          ++ lib.optionals wsl [
+            inputs.nixos-wsl.nixosModules.default
+            { wsl.enable = true; }
           ];
         }
     );

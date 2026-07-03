@@ -15,11 +15,12 @@
       bluetooth
       plymouth
       openssh
-      sshagent
 
       core
 
       desktop
+
+      user
     ];
   };
 }
