@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.common-packages = {pkgs, ...}: {
+  flake.modules.homeManager.dev-packages = {pkgs, ...}: {
     home.packages = with pkgs; [
       neovim
       unzip

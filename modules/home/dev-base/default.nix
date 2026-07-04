@@ -1,6 +1,6 @@
 {config, ...}: {
   flake.modules.homeManager.dev-base.imports = with config.flake.modules.homeManager; [
-    common-packages
+    dev-packages
     fish
     tmux
     git
