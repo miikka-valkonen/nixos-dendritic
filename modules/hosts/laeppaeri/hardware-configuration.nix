@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  configurations.nixos.laeppaeri.module = {
+  configurations.nixos.laeppaeri.hostModule = {
     config,
     lib,
     modulesPath,

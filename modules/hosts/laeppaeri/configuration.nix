@@ -10,7 +10,7 @@
     wallpaper = ../../../wallpapers/purple_leaves.png;
     base16Scheme = "framer";
 
-    module.imports = with config.flake.modules.nixos; [
+    hostModule.imports = with config.flake.modules.nixos; [
       audio
       bluetooth
       plymouth

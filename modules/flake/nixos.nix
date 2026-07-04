@@ -55,7 +55,7 @@
             default = null;
           };
 
-          module = lib.mkOption {
+          hostModule = lib.mkOption {
             type = lib.types.deferredModule;
           };
         };
@@ -66,7 +66,7 @@
   config.flake = {
     nixosConfigurations = lib.flip lib.mapAttrs config.configurations.nixos (
       name: {
-        module,
+        hostModule,
         system,
         allowUnfree,
         stateVersion,
@@ -81,7 +81,7 @@
           };
 
           modules = [
-            module
+            hostModule
 
             {
               nixpkgs = {
