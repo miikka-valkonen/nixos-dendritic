@@ -12,6 +12,7 @@
         kitty
         spotify
         spotify-player
+        cliamp
       ];
     };
   };
