@@ -6,7 +6,7 @@
         dev-extra
 
         aerc
-        spotify-player
+        cliamp
       ];
     };
   };
