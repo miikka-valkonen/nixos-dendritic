@@ -112,7 +112,10 @@
             ]
             ++ lib.optionals wsl [
               inputs.nixos-wsl.nixosModules.default
-              {wsl.enable = true;}
+              {
+                wsl.enable = true;
+                wsl.defaultUser = user.username;
+              }
             ];
         }
     );
