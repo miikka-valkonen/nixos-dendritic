@@ -42,7 +42,8 @@
           };
 
           wallpaper = lib.mkOption {
-            type = lib.types.path;
+            type = lib.types.nullOr lib.types.path;
+            default = null;
           };
           base16Scheme = lib.mkOption {
             type = lib.types.nullOr (
