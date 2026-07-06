@@ -1,6 +1,6 @@
 {config, ...}: {
   configurations.homeManager.laeppaeri = {
-    module = {pkgs, ...}: {
+    hostModule = {pkgs, ...}: {
       imports = with config.flake.modules.homeManager; [
         dev-base
 

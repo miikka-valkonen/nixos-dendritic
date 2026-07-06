@@ -7,7 +7,7 @@
   options.configurations.homeManager = lib.mkOption {
     type = lib.types.lazyAttrsOf (
       lib.types.submodule {
-        options.module = lib.mkOption {
+        options.hostModule = lib.mkOption {
           type = lib.types.deferredModule;
         };
       }
@@ -23,7 +23,7 @@
           config.allowUnfree = host.allowUnfree;
         };
       in
-        {module, ...}:
+        {hostModule, ...}:
           inputs.home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             extraSpecialArgs = {
@@ -37,10 +37,11 @@
                   stylix.base16Scheme = lib.mkIf (
                     host.base16Scheme != null
                   ) "${pkgs.base16-schemes}/share/themes/${host.base16Scheme}.yaml";
+                  stylix.targets.gtk.enable = lib.mkIf host.wsl false;
                 }
               )
 
-              module
+              hostModule
 
               {
                 home = {

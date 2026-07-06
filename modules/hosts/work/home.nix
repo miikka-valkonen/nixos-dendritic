@@ -1,6 +1,6 @@
 {config, ...}: {
   configurations.homeManager.work = {
-    module = {pkgs, ...}: {
+    hostModule = {pkgs, ...}: {
       imports = with config.flake.modules.homeManager; [
         dev-base
         dev-extra
