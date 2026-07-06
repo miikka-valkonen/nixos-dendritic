@@ -9,6 +9,7 @@
         isNormalUser = true;
         description = user.username;
         password = "change-me-now";
+        uid = user.uid;
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINod4UhBmnXQ56HFrHNMTPgXmegaOfUsOOnYSqhxrzIf tech@valkonen.cc"
         ];

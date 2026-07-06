@@ -26,6 +26,10 @@
               type = lib.types.singleLineStr;
               readOnly = true;
             };
+            uid = lib.mkOption {
+              type = lib.types.nullOr lib.types.int;
+              default = null;
+            };
           };
 
           externalDevices.audioPlayer = lib.mkOption {
@@ -81,34 +85,35 @@
             inherit user externalDevices;
           };
 
-          modules = [
-            hostModule
+          modules =
+            [
+              hostModule
 
-            {
-              nixpkgs = {
-                hostPlatform = system;
-                config.allowUnfree = allowUnfree;
-              };
-
-              nix = {
-                settings.experimental-features = "pipe-operators nix-command flakes";
-                optimise.automatic = true;
-                gc = {
-                  automatic = true;
-                  dates = "weekly";
-                  options = "--delete-older-than 30d";
+              {
+                nixpkgs = {
+                  hostPlatform = system;
+                  config.allowUnfree = allowUnfree;
                 };
-              };
 
-              networking.hostName = name;
+                nix = {
+                  settings.experimental-features = "pipe-operators nix-command flakes";
+                  optimise.automatic = true;
+                  gc = {
+                    automatic = true;
+                    dates = "weekly";
+                    options = "--delete-older-than 30d";
+                  };
+                };
 
-              system.stateVersion = stateVersion;
-            }
-          ]
-          ++ lib.optionals wsl [
-            inputs.nixos-wsl.nixosModules.default
-            { wsl.enable = true; }
-          ];
+                networking.hostName = name;
+
+                system.stateVersion = stateVersion;
+              }
+            ]
+            ++ lib.optionals wsl [
+              inputs.nixos-wsl.nixosModules.default
+              {wsl.enable = true;}
+            ];
         }
     );
 
