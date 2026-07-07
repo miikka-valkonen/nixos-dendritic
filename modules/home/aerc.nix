@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.aerc = {
+  flake.modules.homeManager.aerc = {secrets, ...}: {
     programs.aerc = {
       enable = true;
 
@@ -211,5 +211,21 @@
         };
       };
     };
+
+    home.file.".config/aerc/accounts.conf".text = ''
+      [Gmail]
+      source        = imaps://${secrets.aerc.Gmail.secret}@imap.gmail.com:993
+      outgoing      = smtp://${secrets.aerc.Gmail.secret}@smtp.gmail.com:587
+      default       = INBOX
+      from          = ${secrets.aerc.Gmail.from}
+      cache-headers = true
+
+      [valkonen.cc]
+      source        = imaps://${secrets.aerc.privateemail.secret}@mail.privateemail.com
+      outgoing      = smtps://${secrets.aerc.privateemail.secret}@mail.privateemail.com
+      default       = INBOX
+      from          = ${secrets.aerc.privateemail.from}
+      cache-headers = true
+    '';
   };
 }
