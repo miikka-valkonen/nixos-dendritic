@@ -28,6 +28,7 @@
             inherit pkgs;
             extraSpecialArgs = {
               inherit (host) user externalDevices;
+              secrets = builtins.fromJSON (builtins.readFile ../../secrets/secrets.json);
             };
             modules = [
               config.flake.modules.homeManager.stylix

@@ -22,6 +22,7 @@
       opencode
       rtk
       claude-code
+      git-crypt
     ];
   };
 }
