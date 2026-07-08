@@ -6,6 +6,7 @@
         minimal-tmux-status
         yank
         copy-toolkit
+        pain-control
       ];
 
       extraConfig = ''
@@ -14,8 +15,9 @@
         set -sg escape-time 10
         set -g focus-events on
         set -g default-terminal "screen-256color"
-        bind T copy-mode-vi v send-keys -X begin-selection
-        bind k kill-session
+        bind r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded..."
+        bind -T copy-mode-vi v send-keys -X begin-selection
+        bind d kill-session
         bind -n M-h previous-window
         bind -n M-l next-window
       '';
