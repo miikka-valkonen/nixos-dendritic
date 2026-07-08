@@ -12,7 +12,6 @@
       bicep
       sqlcmd # enable dadbod
       pup # pretty print ADO XML fields in Nvim
-      wslu # should be elsewhere...
       markdownlint-cli2
       terraform
     ];
