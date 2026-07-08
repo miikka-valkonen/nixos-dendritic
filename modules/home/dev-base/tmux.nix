@@ -14,8 +14,10 @@
         set -sg escape-time 10
         set -g focus-events on
         set -g default-terminal "screen-256color"
-        bind-key -T copy-mode-vi v send-keys -X begin-selection
-        bind-key -T copy-mode-vi V send-keys -X rectangle-toggle
+        bind T copy-mode-vi v send-keys -X begin-selection
+        bind k kill-session
+        bind -n M-h previous-window
+        bind -n M-l next-window
       '';
     };
   };
