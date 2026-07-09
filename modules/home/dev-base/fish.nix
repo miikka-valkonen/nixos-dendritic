@@ -2,6 +2,13 @@
   flake.modules.homeManager.fish = {pkgs, ...}: {
     programs.fish = {
       enable = true;
+      shellAbbrs = {
+        ga = "g -a";
+        gall = "g -all";
+        gp = "g --full-path";
+        gs = "g --total-size --size";
+        mux = "tmuxinator";
+      };
       interactiveShellInit = ''
         set fish_greeting # Disable greeting
         fish_vi_key_bindings
