@@ -13,6 +13,9 @@
       sqlcmd # enable dadbod
       pup # pretty print ADO XML fields in Nvim
       markdownlint-cli2
+      bruno-cli
+      azure-cli
+      azure-cli-extensions.azure-devops
       terraform
     ];
 
