@@ -22,5 +22,11 @@
     home.sessionVariables = {
       DOTNET_ROOT = "${combinedDotnet}/share/dotnet";
     };
+
+    programs.fish.shellAbbrs = {
+      brul = "bru run x --env localhost -o file &> /dev/null; cat file | jq -r '.results[0].response | [.status, .statusText, .data]'; rm file";
+      brus = "bru run x --env stest -o file &> /dev/null; cat file | jq -r '.results[0].response | [.status, .statusText, .data]'; rm file";
+      brua = "bru run x --env atest -o file &> /dev/null; cat file | jq -r '.results[0].response | [.status, .statusText, .data]'; rm file";
+    };
   };
 }
