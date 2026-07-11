@@ -1,15 +1,13 @@
 # Core System Modules
 
-This directory contains fundamental NixOS system-level modules required by every host.
+This directory contains fundamental NixOS system-level modules for boot and locale. Imported as a group via the `core` module.
 
 ## Modules
 
 | Module | Description |
 |--------|-------------|
-| `boot` | Bootloader and kernel configuration |
-| `locale` | Timezone, keyboard layout, and language settings |
-| `openssh` | SSH server configuration |
-| `user` | User account management, groups, packages, and shell |
+| `boot` | systemd-boot bootloader with EFI support |
+| `locale` | Europe/Helsinki timezone, Finnish locale overrides, Finnish keyboard layout |
 
 ## Usage
 

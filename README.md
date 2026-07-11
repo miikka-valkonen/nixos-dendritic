@@ -9,89 +9,74 @@ Modules placed anywhere under `modules/` are automatically discovered and made a
 
 ## Hosts
 
-| Host | Type | Hardware | Desktop | Services |
-|------|------|----------|---------|----------|
-| `sam` | Desktop | AMD CPU/GPU | KDE | Docker, Podman, Bluetooth, Tailscale, Ollama, Plymouth, Wacom |
-| `dean` | Laptop | Intel CPU/GPU | KDE | Podman, Bluetooth, Tailscale, Plymouth |
-| `castiel` | Server | — | — | *Planned* |
+| Host | Type | Hardware | Desktop | Notes |
+|------|------|----------|---------|-------|
+| `laeppaeri` | Laptop | Intel CPU/iGPU, Nvidia 960MX (disabled) | KDE Plasma 6 | Audio, Bluetooth, Plymouth |
+| `work` | WSL | — | — | NixOS-WSL, work tooling only |
 
 ## Features
 
 - **Dendritic module discovery** — drop a `.nix` file anywhere in `modules/` and it's automatically imported
-- **Per-host configuration** — separate `configuration.nix` + `home.nix` + `hardware-configuration.nix` per machine
-- **Declarative theming** via [Stylix](https://github.com/danth/stylix) — dark theme, Agave Nerd Font, Bibata cursor, Firefox/Librewolf theme targets
+- **Per-host configuration** — separate `configuration.nix` + `home.nix` per machine
+- **Declarative theming** via [Stylix](https://github.com/danth/stylix) — dark theme, JetBrains Mono Nerd Font, Bibata-Modern-Classic cursor, Firefox theme targets
 - **Home Manager** — user-level package and dotfile management for every host
-- **Neovim (Nixvim)** — fully customized editor with LSP, Telescope, Git, Copilot Chat, and polished UI — see [`nixvim`](./modules/home/dev/nixvim/README.md)
-- **KDE Plasma** — declarative desktop configuration via [plasma-manager](https://github.com/nix-community/plasma-manager)
-- **Gaming** — Lutris, Heroic Games Launcher, Minecraft, FF14
-- **Container runtimes** — Docker and rootless Podman
-- **Flake-parts** — modular, composable flake architecture
-
-## Configuration
-
-Before deploying, set your personal values in [`modules/hosts/variables.nix`](./modules/hosts/variables.nix):
-
-| Variable | Description |
-|---|---|
-| `user.username` | Your Unix username |
-| `user.email` | Your email address (used in Git config) |
-| `user.hashedPassword` | Your user password hash (`mkpasswd -m sha-512`) |
-| `rootHashedPassword` | Root password hash (`mkpasswd -m sha-512`) |
+- **KDE Plasma 6** — declarative desktop via [plasma-manager](https://github.com/nix-community/plasma-manager) with custom SDDM (black hole theme)
+- **WSL support** — `work` host runs under NixOS-WSL with minimal footprint
+- **Secrets** — loaded from `secrets/secrets.json` (encrypted with git-crypt)
+- **Dev tooling** — neovim, lazygit, opencode, claude-code, rtk, fish, tmux, zoxide, fzf, ripgrep
+- **Work tooling** — .NET SDK (8/9/10), Azure CLI, Terraform, bicep, Bruno CLI
+- **Email** — aerc with Gmail and privateemail.com accounts
+- **Music** — cliamp with YouTube Music
 
 ## Structure
 
 ```
 modules/
-├── flake/              # Flake-level outputs (flake-parts wiring, formatter, systems, variables)
+├── flake/              # Flake-level outputs (flake-parts wiring, theming, systems)
 │   ├── flake-parts.nix # flake-parts integration
 │   ├── home.nix        # Home Manager output generator
 │   ├── nixos.nix       # NixOS configuration generator
-│   ├── stylix.nix      # Declarative theming
-│   ├── formatter.nix   # nix fmt (nixfmt)
-│   ├── systems.nix     # Supported systems
-│   └── variables.nix   # Shared options (username, email, stateVersion)
+│   ├── stylix.nix      # Declarative theming (JetBrains Mono, Bibata cursor)
+│   └── systems.nix     # Supported systems (x86_64-linux, aarch64-linux)
 ├── hosts/              # Per-host machine configurations
-│   ├── sam/            # Desktop: configuration.nix, home.nix, hardware-configuration.nix
-│   ├── dean/           # Laptop: configuration.nix, home.nix, hardware-configuration.nix
-│   ├── castiel/        # Server (placeholder)
-│   └── variables.nix   # Global variables shared across hosts
+│   ├── laeppaeri/      # Laptop: configuration.nix, home.nix, hardware-configuration.nix
+│   └── work/           # WSL: configuration.nix, home.nix
 ├── nixos/              # Shared NixOS system modules
-│   ├── core/           # Boot, locale, SSH, user accounts
-│   ├── desktop/        # Audio, networking, power, gaming, desktop managers
-│   ├── services/       # Tailscale, Ollama
-│   ├── bluetooth.nix   # Bluetooth hardware support
-│   ├── docker.nix      # Docker container engine
-│   ├── podman.nix      # Rootless Podman
-│   ├── plymouth.nix    # Boot splash screen
-│   ├── vm.nix          # Virtualization support
-│   └── wacom.nix       # Wacom tablet support
+│   ├── core/           # Boot, locale
+│   ├── desktop/        # NetworkManager + KDE Plasma 6
+│   ├── user/           # User accounts, groups, shell
+│   ├── audio.nix       # Pipewire audio
+│   ├── bluetooth.nix   # Bluetooth support
+│   ├── openssh.nix     # SSH server (key-only auth)
+│   └── plymouth.nix    # Boot splash screen
 └── home/               # Home Manager user modules
-    ├── dev/            # Developer tools (Alacritty, Git, Zsh, Zoxide, Direnv, Nixvim)
-    ├── games/          # Gaming (Lutris, Heroic, Minecraft, FF14)
-    ├── office/         # Productivity (Obsidian, OnlyOffice)
-    ├── bottles.nix     # Windows software containers
+    ├── dev-base/       # Core dev tools (fish, tmux, git, zoxide, neovim, etc.)
+    ├── dev-extra/      # Work dev tools (.NET, Azure, Terraform, Bruno)
+    ├── aerc.nix        # Terminal email client
+    ├── cliamp.nix      # CLI music player (YouTube Music)
     ├── discord.nix
     ├── firefox.nix
-    ├── gtk.nix
-    ├── librewolf.nix
-    ├── opencode.nix
-    ├── plasma-manager.nix
-    └── udiskie.nix
+    ├── kitty.nix       # Terminal emulator
+    ├── onlyoffice.nix
+    └── plasma-manager.nix
 
-wallpapers/             # Desktop wallpapers (5 images) — see wallpapers/README.md
+secrets/
+    secrets.json        # Encrypted with git-crypt
+
+wallpapers/
+    purple_leaves.png
 ```
 
 ## Prerequisites
 
 - NixOS with flakes enabled
-- Nix command set to `experimental-features = nix-command flakes` (already default on NixOS)
+- `experimental-features = nix-command flakes` (already default on NixOS)
 
 ## Usage
 
 ### Apply system configuration
 
 ```bash
-# Replace <host> with sam, dean, or castiel
 sudo nixos-rebuild switch --flake .#<host>
 ```
 
@@ -107,12 +92,6 @@ home-manager switch --flake .#<host>
 nix flake update
 ```
 
-### Format all Nix files
-
-```bash
-nix fmt
-```
-
 ### Check flake integrity
 
 ```bash
@@ -122,9 +101,9 @@ nix flake check
 ## Adding a new host
 
 1. Create a directory under `modules/hosts/<name>/`
-2. Add `configuration.nix`, `home.nix`, and `hardware-configuration.nix`
-3. The dendritic architecture automatically discovers the new host
+2. Add `configuration.nix` and `home.nix` following the pattern of existing hosts
+3. The dendritic architecture automatically discovers the new host — no registration needed
 
 ## Adding a new module
 
-Just create a `.nix` file anywhere under `modules/` and it will be automatically available via `config.flake.modules.nixos.<name>` (for `modules/nixos/`) or `config.flake.modules.homeManager.<name>` (for `modules/home/`).
+Create a `.nix` file anywhere under `modules/` and it will be automatically available via `config.flake.modules.nixos.<name>` (for `modules/nixos/`) or `config.flake.modules.homeManager.<name>` (for `modules/home/`).

@@ -2,28 +2,37 @@
 
 This directory contains Home Manager modules that configure user-level applications and environments.
 
-## Directory Structure
+## Module Groups
 
-- `dev/`: Development tools and environments (Alacritty, Git, Zsh, Zoxide, Direnv, Zed, Nixvim, dev packages).
-- `office/`: Productivity suites (Calibre, Obsidian, OnlyOffice).
+- `dev-base/`: Core developer tools — fish shell (with abbreviations), tmux, git, zoxide, and packages: neovim, lazygit, fzf, ripgrep, fd, delta, cargo/rustc, gcc, jq, luarocks, tmuxinator, fastfetch, nodejs, opencode, claude-code, rtk, git-crypt.
+- `dev-extra/`: Work-specific tools — .NET SDK (8/9/10), Azure CLI, Terraform, bicep, sqlcmd, pup, markdownlint-cli2, Bruno CLI; also git-hooks.
 
 ## Standalone Modules
 
 | Module | Description |
 |--------|-------------|
-| `discord` | Popular chat and community platform |
-| `firefox` | Web browser configuration |
+| `aerc` | Terminal email client with Gmail and privateemail.com accounts |
+| `cliamp` | CLI music player using YouTube Music |
+| `discord` | Discord desktop client |
+| `firefox` | Firefox with Stylix color theme |
+| `kitty` | Kitty terminal emulator |
+| `onlyoffice` | OnlyOffice office suite |
 | `plasma-manager` | Declarative KDE Plasma configuration |
 
 ## Usage
 
-These modules are automatically discovered and can be imported into your home configuration at `modules/hosts/<host>/home.nix` using the dendritic pattern:
+Modules are automatically discovered and imported in `modules/hosts/<host>/home.nix`:
 
 ```nix
-imports = with config.flake.modules.homeManager; [
-  dev
-  firefox
-  discord
-  # ...
-];
+hostModule = {pkgs, ...}: {
+  imports = with config.flake.modules.homeManager; [
+    dev-base
+    discord
+    firefox
+    plasma-manager
+    aerc
+    kitty
+    cliamp
+  ];
+};
 ```

@@ -4,27 +4,31 @@ This directory contains NixOS system-level modules for core services, hardware s
 
 ## Directory Structure
 
-- `core/`: Fundamental system configuration — bootloader, locale, SSH, user accounts.
-- `desktop/`: Graphical environment, audio, networking, power, gaming, and desktop managers.
-- `services/`: System services — Tailscale mesh VPN, Ollama LLM server.
+- `core/`: Fundamental system configuration — bootloader and locale.
+- `desktop/`: Graphical environment — NetworkManager and KDE Plasma 6.
+- `user/`: User account management, groups, and shell.
 
 ## Standalone Modules
 
 | Module | Description |
 |--------|-------------|
-| `bluetooth` | Enable and configure Bluetooth hardware |
-| `plymouth` | Boot splash screen configuration |
+| `audio` | Pipewire audio server (ALSA + PulseAudio compatibility, rtkit) |
+| `bluetooth` | Bluetooth hardware support |
+| `openssh` | SSH server — key-only auth, root login disabled |
+| `plymouth` | Boot splash screen |
 
 ## Usage
 
-Modules are automatically exposed via `config.flake.modules.nixos` and can be imported in `modules/hosts/<host>/configuration.nix`:
+Modules are exposed via `config.flake.modules.nixos` and imported in `modules/hosts/<host>/configuration.nix`:
 
 ```nix
-module.imports = with config.flake.modules.nixos; [
+hostModule.imports = with config.flake.modules.nixos; [
+  audio
+  bluetooth
+  plymouth
+  openssh
   core
   desktop
-  kde
-  bluetooth
-  # ...
+  user
 ];
 ```
