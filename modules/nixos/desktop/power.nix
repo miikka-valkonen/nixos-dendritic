@@ -1,4 +1,6 @@
 {
+  # nixos-hardware.nixosModules.common-pc-laptop includes tlp, if power-profiles-daemon is not enabled
+  # maybe tlp is good enough?
   flake.modules.nixos.power = {
     services = {
       power-profiles-daemon.enable = true;
