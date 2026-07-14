@@ -90,6 +90,49 @@
         "baloofilerc"."Basic Settings"."Indexing-Enabled" = false;
         "kwinrc"."org.kde.kdecoration2"."ButtonsOnLeft" = "SF";
       };
+
+      window-rules = [
+        {
+          description = "Firefox - left half";
+          match = {
+            window-class = {
+              value = "firefox firefox";
+              type = "exact";
+            };
+            window-types = ["normal"];
+          };
+          apply = {
+            position = {
+              value = "0,32";
+              apply = "initially";
+            };
+            size = {
+              value = "960,1048";
+              apply = "initially";
+            };
+          };
+        }
+        {
+          description = "Kitty - right half";
+          match = {
+            window-class = {
+              value = "kitty kitty";
+              type = "exact";
+            };
+            window-types = ["normal"];
+          };
+          apply = {
+            position = {
+              value = "960,32";
+              apply = "initially";
+            };
+            size = {
+              value = "960,1048";
+              apply = "initially";
+            };
+          };
+        }
+      ];
     };
   };
 }
