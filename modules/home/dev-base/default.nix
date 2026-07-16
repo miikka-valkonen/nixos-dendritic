@@ -5,5 +5,6 @@
     tmux
     git
     zoxide
+    lsp
   ];
 }
