@@ -39,6 +39,7 @@
                     host.base16Scheme != null
                   ) "${pkgs.base16-schemes}/share/themes/${host.base16Scheme}.yaml";
                   stylix.targets.gtk.enable = lib.mkIf host.wsl false;
+                  dconf.enable = lib.mkIf host.wsl false;
                 }
               )
 
