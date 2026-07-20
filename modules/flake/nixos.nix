@@ -115,6 +115,7 @@
               {
                 wsl.enable = true;
                 wsl.defaultUser = user.username;
+                wsl.interop.register = true;
               }
             ];
         }

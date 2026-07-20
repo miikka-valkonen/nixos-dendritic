@@ -8,6 +8,13 @@
         aerc
         cliamp
       ];
+
+      home.packages = [
+        (pkgs.writeShellScriptBin "xdg-open" ''
+          url=$(printf '%s' "$1" | sed "s/'/\\'\\'/g")
+          exec powershell.exe -NoProfile -Command "Start-Process '$url'" 2>/dev/null
+        '')
+      ];
     };
   };
 }
