@@ -23,6 +23,7 @@
       rtk
       claude-code
       git-crypt
+      tree-sitter
     ];
   };
 }
