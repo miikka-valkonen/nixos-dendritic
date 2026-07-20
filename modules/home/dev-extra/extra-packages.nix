@@ -23,6 +23,10 @@
       DOTNET_ROOT = "${combinedDotnet}/share/dotnet";
     };
 
+    programs.fish.interactiveShellInit = ''
+      fish_add_path ~/.dotnet/tools
+    '';
+
     programs.fish.shellAbbrs = {
       brul = "bru run x --env localhost -o file &> /dev/null; cat file | jq -r '.results[0].response | [.status, .statusText, .data]'; rm file";
       brus = "bru run x --env stest -o file &> /dev/null; cat file | jq -r '.results[0].response | [.status, .statusText, .data]'; rm file";
