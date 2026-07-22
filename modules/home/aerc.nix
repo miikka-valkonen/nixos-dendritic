@@ -3,6 +3,12 @@
     programs.aerc = {
       enable = true;
 
+      extraConfig = {
+        general = {
+          unsafe-accounts-conf = "true";
+        };
+      };
+
       extraBinds = {
         global = {
           "<C-t>" = ":term<Enter> # open terminal";
