@@ -32,10 +32,6 @@
             };
           };
 
-          externalDevices.audioPlayer = lib.mkOption {
-            type = lib.types.singleLineStr;
-            readOnly = true;
-          };
           allowUnfree = lib.mkOption {
             type = lib.types.bool;
             default = true;

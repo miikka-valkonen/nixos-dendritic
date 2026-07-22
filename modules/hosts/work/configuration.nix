@@ -7,7 +7,6 @@
       email = "miikka.valkonen@if.fi";
       uid = 1100;
     };
-    externalDevices.audioPlayer = "Miikan WiiM Amp";
 
     base16Scheme = "kanagawa-dragon";
 

@@ -27,7 +27,6 @@ Per-host options defined in `configuration.nix`:
 | `user.email` | Email address (used in Git config) |
 | `user.uid` | Optional UID override |
 | `stateVersion` | NixOS state version |
-| `externalDevices.audioPlayer` | Name of external audio player device |
 | `wallpaper` | Path to wallpaper image |
 | `base16Scheme` | Color scheme (`kanagawa-dragon`, `black-metal-mayhem`, `framer`) |
 | `wsl` | Enable NixOS-WSL mode |
