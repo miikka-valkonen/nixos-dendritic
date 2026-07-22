@@ -17,6 +17,7 @@
       azure-cli
       azure-cli-extensions.azure-devops
       terraform
+      azure-functions-core-tools
     ];
 
     home.sessionVariables = {

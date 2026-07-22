@@ -20,6 +20,7 @@
       gnumake
       nodejs_26
       opencode
+      lsof
       rtk
       claude-code
       git-crypt
