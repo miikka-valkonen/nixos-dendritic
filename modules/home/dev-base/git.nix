@@ -25,7 +25,6 @@
           editor = "nvim";
           commentchar = ";";
           hooksPath = "~/git-hooks";
-          autocrlf = "false";
           pager = "delta";
         };
         interactive.diffFilter = "delta --color-only";
