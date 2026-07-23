@@ -2,36 +2,46 @@
   flake.modules.homeManager.git-hooks = {
     programs.git.settings.core.hooksPath = "~/git-hooks";
 
-    home.file."git-hooks/pre-commit".text = ''
-      # Check double comments
-      if git diff -p -M --cached HEAD -- | grep '^+' | grep -E '//\s*//'; then
-        echo 'Preventing commit, because double comments'
-        exit 1
-      fi
+    home.file."git-hooks/pre-commit" = {
+      executable = true;
+      text = ''
+        #!/usr/bin/env bash
 
-      # Check formatting
-      git diff --cached --name-only --diff-filter=ACM -z *.fs | xargs -0 -r dotnet fantomas --check
-    '';
+        # Check double comments
+        if git diff -p -M --cached HEAD -- | grep '^+' | grep -E '//\s*//'; then
+          echo 'Preventing commit, because double comments'
+          exit 1
+        fi
 
-    home.file."git-hooks/prepare-commit-msg".text = ''
-      FILE="$1"
-      MESSAGE=$(cat "$FILE")
+        # Check formatting
+        git diff --cached --name-only --diff-filter=ACM -z *.fs | xargs -0 -r dotnet fantomas --check
+      '';
+    };
 
-      # Extract ticket number from branch (e.g., feature/12345 → 12345)
-      BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
-      TICKET=''${BRANCH_NAME#feature/}
+    home.file."git-hooks/prepare-commit-msg" = {
+      executable = true;
+      text = ''
+        #!/usr/bin/env bash
 
-      # Only add if numeric
-      if ! [ "$TICKET" -eq "$TICKET" ] 2>/dev/null; then
-        echo "$TICKET isn't numeric, not adding ref to ticket"
-        exit 0
-      fi
+        FILE="$1"
+        MESSAGE=$(cat "$FILE")
 
-      # Check if a line exactly matches "#<ticket>"
-      echo "$MESSAGE" | grep -qx "#$TICKET" && exit 0
+        # Extract ticket number from branch (e.g., feature/12345 -> 12345)
+        BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+        TICKET=''${BRANCH_NAME#feature/}
 
-      # Append the ticket reference
-      printf "%s\n\n#%s\n" "$MESSAGE" "$TICKET" >"$FILE"
-    '';
+        # Only add if numeric
+        if ! [ "$TICKET" -eq "$TICKET" ] 2>/dev/null; then
+          echo "$TICKET isn't numeric, not adding ref to ticket"
+          exit 0
+        fi
+
+        # Check if a line exactly matches "#<ticket>"
+        echo "$MESSAGE" | grep -qx "#$TICKET" && exit 0
+
+        # Append the ticket reference
+        printf "%s\n\n#%s\n" "$MESSAGE" "$TICKET" >"$FILE"
+      '';
+    };
   };
 }
