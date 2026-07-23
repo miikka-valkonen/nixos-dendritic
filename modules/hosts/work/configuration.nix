@@ -9,7 +9,7 @@
       uid = 1100;
     };
 
-    base16Scheme = "black-metal-mayhem";
+    base16Scheme = "framer";
 
     hostModule.imports = with config.flake.modules.nixos; [
       user

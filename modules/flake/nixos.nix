@@ -52,8 +52,6 @@
           base16Scheme = lib.mkOption {
             type = lib.types.nullOr (
               lib.types.enum [
-                "kanagawa-dragon"
-                "black-metal-mayhem"
                 "framer"
               ]
             );
