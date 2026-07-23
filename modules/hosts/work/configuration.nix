@@ -4,6 +4,7 @@
     stateVersion = "26.05";
     user = {
       username = "miikka";
+      name = "Miikka Valkonen";
       email = "miikka.valkonen@if.fi";
       uid = 1100;
     };

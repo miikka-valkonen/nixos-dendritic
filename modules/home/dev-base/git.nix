@@ -5,7 +5,9 @@
 
       settings = {
         user = {
-          name = user.username;
+          name =
+            let maybeName = user.name or null;
+            in if maybeName != null then maybeName else user.username;
           inherit (user) email;
         };
         alias = {

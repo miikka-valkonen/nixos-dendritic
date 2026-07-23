@@ -22,6 +22,10 @@
               type = lib.types.singleLineStr;
               readOnly = true;
             };
+            name = lib.mkOption {
+              type = lib.types.nullOr lib.types.singleLineStr;
+              default = null;
+            };
             email = lib.mkOption {
               type = lib.types.singleLineStr;
               readOnly = true;
