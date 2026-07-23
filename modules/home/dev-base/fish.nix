@@ -18,12 +18,10 @@
           end
         end
       '';
-      plugins = [
-        {
-          name = "tide";
-          src = pkgs.fishPlugins.tide.src;
-        }
-      ];
+    };
+    programs.starship = {
+      enable = true;
+      enableFishIntegration = true;
     };
   };
 }
