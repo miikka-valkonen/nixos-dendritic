@@ -17,6 +17,7 @@
           cobf = "!f() { git up; git checkout -b feature/$1 ; }; f";
           up = "!git pull --rebase --prune $@";
           done = "!\"git com; git up; git bc\"";
+          uncommit = "reset --soft HEAD~1";
         };
         core = {
           editor = "nvim";
