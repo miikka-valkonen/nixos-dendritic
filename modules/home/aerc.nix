@@ -7,6 +7,13 @@
         general = {
           unsafe-accounts-conf = "true";
         };
+        filters = {
+          "text/plain" = "colorize";
+          "message/delivery-status" = "colorize";
+          "message/rfc822" = "colorize";
+          "text/html" = "html | colorize";
+          ".headers" = "colorize";
+        };
       };
 
       extraBinds = {
