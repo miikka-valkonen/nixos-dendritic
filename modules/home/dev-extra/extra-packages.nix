@@ -18,6 +18,7 @@
       azure-cli-extensions.azure-devops
       terraform
       azure-functions-core-tools
+      netcoredbg
     ];
 
     home.sessionVariables = {
