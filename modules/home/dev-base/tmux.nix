@@ -1,11 +1,16 @@
 {
-  flake.modules.homeManager.tmux = {pkgs, config, ...}: {
+  flake.modules.homeManager.tmux = {
+    pkgs,
+    config,
+    ...
+  }: {
     programs.tmux = {
       enable = true;
       plugins = with pkgs.tmuxPlugins; [
         minimal-tmux-status
         yank
         pain-control
+        jump
       ];
 
       extraConfig = ''
@@ -23,6 +28,10 @@
         bind -n M-c copy-mode
         set -g @minimal-tmux-bg "#${config.lib.stylix.colors.base01}"
         set -g @minimal-tmux-fg "#${config.lib.stylix.colors.base06}"
+        set -g @jump-key 's'
+        set -g @jump-bg-color '\e[0m\e[90m'
+        set -g @jump-fg-color '\e[1m\e[31m'
+        set -g @jump-keys 'tsraneiodhplfugjvmwybk'
         # Smart pane switching with awareness of Vim splits.
         # See: https://github.com/christoomey/vim-tmux-navigator
         vim_pattern='(\S+/)?g?\.?(view|l?n?vim?x?|fzf)(diff)?(-wrapped)?'
