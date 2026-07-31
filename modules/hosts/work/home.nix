@@ -6,7 +6,6 @@
         dev-extra
 
         aerc
-        cliamp
       ];
 
       home.packages = [
