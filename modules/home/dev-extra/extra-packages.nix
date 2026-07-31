@@ -19,6 +19,7 @@
       terraform
       azure-functions-core-tools
       netcoredbg
+      python3
     ];
 
     home.sessionVariables = {
