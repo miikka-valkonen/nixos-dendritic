@@ -5,7 +5,7 @@ This directory contains the underlying logic that powers the flake outputs and c
 ## Key Files
 
 - `flake-parts.nix`: Integration point for `flake-parts` modules.
-- `nixos.nix`: Defines the `configurations.nixos` option — a lazy attrset of per-host configs with `system`, `stateVersion`, `user`, `externalDevices`, `allowUnfree`, `wsl`, `wallpaper`, `base16Scheme`, and `hostModule`. Generates `nixosConfigurations` with Nix settings (GC, `pipe-operators nix-command flakes`), networking, and optional NixOS-WSL integration.
+- `nixos.nix`: Defines the `configurations.nixos` option — a lazy attrset of per-host configs with `system`, `stateVersion`, `user`, `allowUnfree`, `wsl`, `wallpaper`, `base16Scheme`, and `hostModule`. Generates `nixosConfigurations` with Nix settings (GC, `pipe-operators nix-command flakes`), networking, and optional NixOS-WSL integration.
 - `home.nix`: Defines the `configurations.homeManager` option. Generates `homeConfigurations` by pulling host config from the corresponding NixOS entry. Loads secrets from `secrets/secrets.json` and passes them as `extraSpecialArgs`.
 - `stylix.nix`: Declarative theming (dark polarity, JetBrains Mono Nerd Font, Bibata-Modern-Classic cursor, Noto Color Emoji). Published as a Home Manager module with Firefox color theme targets.
 - `systems.nix`: Supported systems (`x86_64-linux`).

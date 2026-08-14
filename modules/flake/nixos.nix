@@ -74,13 +74,12 @@
         allowUnfree,
         stateVersion,
         user,
-        externalDevices,
         wsl,
         ...
       }:
         lib.nixosSystem {
           specialArgs = {
-            inherit user externalDevices;
+            inherit user;
           };
 
           modules =

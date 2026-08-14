@@ -27,7 +27,7 @@
           inputs.home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             extraSpecialArgs = {
-              inherit (host) user externalDevices;
+              inherit (host) user;
               secrets = builtins.fromJSON (builtins.readFile ../../secrets/secrets.json);
             };
             modules = [
