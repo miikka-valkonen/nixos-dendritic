@@ -14,8 +14,7 @@
       pup # pretty print ADO XML fields in Nvim
       markdownlint-cli2
       bruno-cli
-      azure-cli
-      azure-cli-extensions.azure-devops
+      (azure-cli.withExtensions [azure-cli-extensions.azure-devops])
       terraform
       azure-functions-core-tools
       netcoredbg
