@@ -6,5 +6,7 @@
     git
     zoxide
     lsp
+    access-tokens
+    ssh
   ];
 }
