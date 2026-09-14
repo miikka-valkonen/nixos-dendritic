@@ -7,9 +7,7 @@
       # ** This session may be vulnerable to "store now, decrypt later" attacks.
       # ** The server may need to be upgraded. See https://openssh.com/pq.html
       extraConfig = ''
-        Host github.com
-            LogLevel ERROR
-        Host dev.azure.com
+        Host *
             LogLevel ERROR
       '';
     };
