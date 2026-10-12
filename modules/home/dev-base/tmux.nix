@@ -23,6 +23,7 @@
         bind r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded..."
         bind -T copy-mode-vi v send-keys -X begin-selection
         bind d kill-session
+        set-option -g detach-on-destroy off
         bind -n M-h previous-window
         bind -n M-l next-window
         bind -n M-c copy-mode
