@@ -93,7 +93,11 @@
                 };
 
                 nix = {
-                  settings.experimental-features = "pipe-operators nix-command flakes";
+                  settings.experimental-features = [
+                    "pipe-operators"
+                    "nix-command"
+                    "flakes"
+                  ];
                   optimise.automatic = true;
                   gc = {
                     automatic = true;
